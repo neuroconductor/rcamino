@@ -18,29 +18,27 @@ binaries = c("adcfit", "addnoise", "analyze2voxel", "analyzedti", "analyzeheader
   "voxel2scanner", "voxelclassify", "voxelmean", "vtkstreamlines",
   "wdtfit")
 
-x = sapply(binaries, function(funcname) {
-  camino_help(funcname, intern = TRUE)
+x = lapply(binaries, function(funcname) {
+  print(funcname)
+  parse_camino_args(funcname)
 })
+names(x) = binaries
 
-
-makefunc = function(funcname, write = FALSE, remove = FALSE) {
+makefunc = function(funcname, write = TRUE, remove = FALSE) {
   cat("#", funcname, fill = TRUE)
   x = readLines("camino_generic_function.R")
   x = gsub("%%", funcname, x)
-  x = gsub("%type", type, x)
-  if (! is.null(ex_text)) {
-    ex_text[1] = paste0("@examples ", ex_text[1])
-    ex_text = paste0("#' ", ex_text)
-    ex_text = paste0(ex_text, collapse= "\n")
-    x = gsub("%example%", ex_text, x, fixed = TRUE)
-  } else {
-    x = gsub("%example%", "#'", x)
-  }
+  args = parse_camino_args(funcname)
+  args = paste0("# ", args)
+  x = c(x, args)
+
+  fname = paste0("R/", funcname, ".R")
   if (write) {
-    writeLines(text = x, con = paste0("R/", f_no_dot, ".R"))
+    writeLines(text = x, con = fname)
   }
   if (remove) {
-    file.remove(paste0("R/", f_no_dot, ".R"))
+    file.remove(fname)
   }
   invisible()
 }
+sapply(binaries, makefunc, write = FALSE, remove = TRUE)

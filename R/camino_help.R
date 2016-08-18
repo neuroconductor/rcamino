@@ -28,6 +28,10 @@ read_camino_helpfile = function(funcname){
                         package = "caminor")
   funcname = paste0(funcname, ".1")
   file = file.path(man_fol, funcname)
-  res = readLines(file)
+  if (file.exists(file)) {
+    res = readLines(file)
+  } else {
+    res = NULL
+  }
   return(res)
 }
