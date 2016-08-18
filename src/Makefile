@@ -2,8 +2,8 @@ all:
 	unzip camino.zip;
 	cd camino && make;
 	# mkdir -p ../bin;
-	cp camino/bin/* ../inst/bin/;
-	pwd;
+	cp camino/* ../inst/camino/;
+	# pwd;
 	
 
 clean:
