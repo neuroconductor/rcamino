@@ -2,8 +2,8 @@ all:
 	unzip camino.zip;
 	cd camino && make;
 	cd camino/bin && ls;
-	cd ../inst/bin && ls;
-	cp -R camino/bin/trd ../inst/bin/
+	cd ../bin && ls;
+	cp -R camino/bin/trd ../bin/
 
 clean:
 	rm -rf ./camino;
