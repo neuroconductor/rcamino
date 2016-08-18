@@ -1,5 +1,0 @@
-Run:
-
-./tests.sh > output
-
-diff output tests.out
