@@ -2,3 +2,5 @@
 
 export(camino_cmd)
 export(camino_help)
+export(parse_camino_args)
+export(read_camino_helpfile)

@@ -19,7 +19,7 @@ binaries = c("adcfit", "addnoise", "analyze2voxel", "analyzedti", "analyzeheader
   "wdtfit")
 
 x = sapply(binaries, function(funcname) {
-  camino_help(funcname, intern = FALSE)
+  camino_help(funcname, intern = TRUE)
 })
 
 

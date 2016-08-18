@@ -12,3 +12,22 @@ camino_help = function(funcname, ...){
   cmd = sprintf("man -M %s %s", man_fol, funcname)
   system(cmd, ...)
 }
+
+
+#' @title Read Camino Command Help File
+#' @description Wrapper for finding the manual for the Camino function
+#' and reading it into a text file
+#' @param funcname Name of function to be called
+#' @return Character vector
+#' @export
+#'
+#' @examples
+#' read_camino_helpfile("voxel2scanner")
+read_camino_helpfile = function(funcname){
+  man_fol = system.file(file.path("camino", "man", "man1"),
+                        package = "caminor")
+  funcname = paste0(funcname, ".1")
+  file = file.path(man_fol, funcname)
+  res = readLines(file)
+  return(res)
+}
