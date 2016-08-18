@@ -2,7 +2,7 @@ all:
 	unzip camino.zip;
 	cd camino && make;
 	cd camino/bin && ls;
-	cp -r camino/bin/* ../inst/bin/
+	cp -R camino/bin/* ../inst/bin/
 
 clean:
 	rm -rf ./camino;
