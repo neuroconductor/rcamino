@@ -41,4 +41,4 @@ makefunc = function(funcname, write = TRUE, remove = FALSE) {
   }
   invisible()
 }
-sapply(binaries, makefunc, remove = FALSE)
+sapply(binaries, makefunc, remove = TRUE)

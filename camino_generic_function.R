@@ -1,6 +1,6 @@
 #' @title Wrapper for Camino \code{%%} function
 #' @description Performs the Camino \code{%%} function
 #' @export
-%% = function() {
+camino_%% = function() {
   cmd = camino_cmd("%%")
 }
