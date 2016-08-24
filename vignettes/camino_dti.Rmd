@@ -10,7 +10,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(eval = FALSE)
+# knitr::opts_chunk$set(eval = FALSE)
 ```
 
 # Resources and Goals
@@ -29,8 +29,9 @@ First, we download the data into a temporary directory the unzip it:
 ```{r}
 tdir = tempdir()
 tfile = file.path(tdir, "example_dwi.zip")
-download.file("http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip",destfile = tfile)
-out = unzip(zipfile = tfile, exdir = tdir, overwrite = TRUE)
+download.file("http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip",
+              destfile = tfile)
+files = unzip(zipfile = tfile, exdir = tdir, overwrite = TRUE)
 ```
 
 ## Making b-vectors and b-values
@@ -39,7 +40,7 @@ As `dtifit` requires the b-values and b-vectors to be separated, and this data h
 
 ```{r bvecs}
 library(caminor)
-b_data_file = grep("[.]txt$", out, value = TRUE)
+b_data_file = grep("[.]txt$", files, value = TRUE)
 scheme_file = camino_pointset2scheme(infile = b_data_file,
                                 bvalue = 1e9)
 ```
@@ -48,7 +49,7 @@ scheme_file = camino_pointset2scheme(infile = b_data_file,
 Here we ensure that the number of b-values/b-vectors is the same as the number of time points in the 4D image.
 
 ```{r check_img}
-img_fname = grep("4Ddwi_b1000", out, value = TRUE)
+img_fname = grep("4Ddwi_b1000", files, value = TRUE)
 ```
 
 
@@ -66,7 +67,7 @@ Note, from here on forward we will use either the filename for the output of the
 # Fit the diffusion tensor
 
 ```{r}
-mask_fname = grep("mask", out, value = TRUE)
+mask_fname = grep("mask", files, value = TRUE)
 model_fname = camino_modelfit(
   infile = float_fname,
   scheme = scheme_file,
@@ -107,15 +108,28 @@ fa_img2 = model_fname %>%
 all.equal(fa_img2, fa_img2)
 ```
 
+### Visualizing FA images
 
+Using `ortho2`, we can visualize these FA maps:
+```{r}
+ortho2(fa_img)
+```
 # Export DTs to NIfTI
 
+Using `camino_dt2nii`, we can export the diffusion tensors into NIfTI files.  We see the result is the filenames of the NIfTI files, and that they all exist (otherwise there'd be an errors.) 
 ```{r}
-nifti_dt = camino_dt2nii(infile = model_fname, 
-              inputmodel = "dt",
-              header = img_fname, 
-              gzip = TRUE, 
-              )
-print(all(file.exists(nifti_dt)))
+nifti_dt = camino_dt2nii(
+  infile = model_fname, 
+  inputmodel = "dt",
+  header = img_fname, 
+  gzip = TRUE
+)
+stopifnot(all(file.exists(nifti_dt)))
 print(nifti_dt)
+```
+
+We can read these DT images into `R` again using `readnii`, but we must set `drop_dim = FALSE` for diffusion tensor images because the pixel dimensions are zero and `readnii` assumes you want to drop "empty" dimensions
+
+```{r}
+dt_imgs = lapply(nifti_dt, readnii, drop_dim = FALSE)
 ```

@@ -11,7 +11,7 @@
 #' @param verbose print diagnostic messages
 #' @export
 camino_compute = function(
-  cmd = c("fa", "md"),
+  cmd = c("fa", "md", "trd"),
   infile,
   inputmodel = c("dt", "twotensor", "threetensor", "multitensor"),
   outfile = NULL,
@@ -68,4 +68,14 @@ camino_fa = function(...) {
 #' @export
 camino_md = function(...) {
   camino_compute(cmd = "md", ...)
+}
+
+
+#' @title Compute Tensor Trace Maps
+#' @description Performs the Camino \code{trd} function to compute
+#' Tensor Trace maps
+#' @param ... Arguments to pass to \code{\link{camino_compute}}
+#' @export
+camino_trd = function(...) {
+  camino_compute(cmd = "trd", ...)
 }

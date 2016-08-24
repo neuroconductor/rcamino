@@ -4,7 +4,7 @@
 \alias{camino_compute}
 \title{Wrapper for Computing FA/MD and other Standard Markers}
 \usage{
-camino_compute(cmd = c("fa", "md"), infile, inputmodel = c("dt",
+camino_compute(cmd = c("fa", "md", "trd"), infile, inputmodel = c("dt",
   "twotensor", "threetensor", "multitensor"), outfile = NULL,
   inputdatatype = NULL, outputdatatype = c("double", "float", "char",
   "short", "int", "long"), verbose = TRUE)
