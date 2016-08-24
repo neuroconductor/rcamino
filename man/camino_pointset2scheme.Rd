@@ -16,6 +16,9 @@ camino_pointset2scheme(infile, bvalue = 1e+09, outfile = NULL,
 
 \item{verbose}{print diagnostic messages}
 }
+\value{
+Output filename
+}
 \description{
 Performs the Camino \code{pointset2scheme} function
 }

@@ -4,7 +4,7 @@
 #' @param bvalue B-value multiplier
 #' @param outfile Output filename for scheme file
 #' @param verbose print diagnostic messages
-#'
+#' @return Output filename
 #' @export
 camino_pointset2scheme = function(
   infile, bvalue = 1e9,
@@ -32,6 +32,7 @@ camino_pointset2scheme = function(
     message(cmd)
   }
   res = system(cmd)
+  return(outfile)
 }
 # .B pointset2scheme  [options]
 #
