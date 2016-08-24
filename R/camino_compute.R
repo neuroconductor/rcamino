@@ -41,7 +41,7 @@ camino_compute = function(
   opts = paste(names(opts), opts, collapse = " ")
   opts = paste0(opts, " > ", shQuote(outfile))
 
-  cmd = camino_cmd("fa")
+  cmd = camino_cmd(cmd)
   start = paste0("cat ", shQuote(infile), " | ")
   cmd = paste(start,  cmd, opts)
   if (verbose) {

@@ -3,6 +3,7 @@
 export(camino_cmd)
 export(camino_compute)
 export(camino_dt2nii)
+export(camino_dteig)
 export(camino_fa)
 export(camino_get_heap)
 export(camino_help)
