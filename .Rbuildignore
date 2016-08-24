@@ -1,4 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 
-inst/bin/tmp.txt
+inst/camino/tmp.txt
+
+function_maker\.R
+camino_generic_function\.R
+
+^\.git
