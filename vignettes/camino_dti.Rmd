@@ -115,6 +115,18 @@ Using `ortho2`, we can visualize these FA maps:
 ```{r}
 ortho2(fa_img)
 ```
+
+## Getting MD vlaues
+
+Similar to getting FA maps, we can get mean diffusivity (MD) maps, read them into `R`, and visualize them using `ortho2`:
+```{r}
+md_img = model_fname %>% 
+  camino_md() %>% 
+  camino_voxel2image(header = img_fname, gzip = TRUE, components = 1) %>% 
+  readnii
+ortho2(md_img)
+```
+
 # Export DTs to NIfTI
 
 Using `camino_dt2nii`, we can export the diffusion tensors into NIfTI files.  We see the result is the filenames of the NIfTI files, and that they all exist (otherwise there'd be an errors.) 
