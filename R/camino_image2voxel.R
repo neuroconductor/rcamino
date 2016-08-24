@@ -17,7 +17,7 @@ camino_image2voxel = function(infile,
   outputdatatype = match.arg(outputdatatype)
 
   if (is.null(outfile)) {
-    outfile = tempfile(fileext = paste0(".", outputdatatype))
+    outfile = tempfile(fileext = paste0(".B", outputdatatype))
   }
 
   opts = c("-inputfile" = shQuote(infile),
