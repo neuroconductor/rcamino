@@ -1,15 +1,21 @@
 #' @title Wrapper for Camino \code{pointset2scheme} function
 #' @description Performs the Camino \code{pointset2scheme} function
-#' @param infile Input 4D file
+#' @param infile Input gradient file
 #' @param bvalue B-value multiplier
 #' @param outfile Output filename for scheme file
 #' @param verbose print diagnostic messages
 #'
 #' @export
 camino_pointset2scheme = function(
-  infile, bvalue = NULL,
+  infile, bvalue = 1e9,
   outfile = NULL,
   verbose = TRUE) {
+
+  scipen = getOption("scipen")
+  on.exit({
+    options("scipen" = scipen)
+  })
+  options("scipen" = 999)
 
   cmd = camino_cmd("pointset2scheme")
   if (is.null(outfile)) {

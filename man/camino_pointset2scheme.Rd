@@ -4,11 +4,11 @@
 \alias{camino_pointset2scheme}
 \title{Wrapper for Camino \code{pointset2scheme} function}
 \usage{
-camino_pointset2scheme(infile, bvalue = NULL, outfile = NULL,
+camino_pointset2scheme(infile, bvalue = 1e+09, outfile = NULL,
   verbose = TRUE)
 }
 \arguments{
-\item{infile}{Input 4D file}
+\item{infile}{Input gradient file}
 
 \item{bvalue}{B-value multiplier}
 
