@@ -7,9 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_knit(eval = FALSE)
+knitr::opts_chunk$set(eval = FALSE)
 ```
 
 # Resources and Goals
@@ -39,7 +40,7 @@ As `dtifit` requires the b-values and b-vectors to be separated, and this data h
 ```{r bvecs}
 library(caminor)
 b_data_file = grep("[.]txt$", out, value = TRUE)
-scheme = camino_pointset2scheme(infile = b_data_file,
+scheme_file = camino_pointset2scheme(infile = b_data_file,
                                 bvalue = 1e9)
 ```
 
@@ -47,8 +48,7 @@ scheme = camino_pointset2scheme(infile = b_data_file,
 Here we ensure that the number of b-values/b-vectors is the same as the number of time points in the 4D image.
 
 ```{r check_img}
-img = grep("4Ddwi_b1000", out, value = TRUE)
-n_timepoints = dim_(img)[5]
+img_fname = grep("4Ddwi_b1000", out, value = TRUE)
 ```
 
 
@@ -56,10 +56,66 @@ n_timepoints = dim_(img)[5]
 Here, we will run an eddy current correction using FSL's `eddy_correct` through `fslr`.  We will save the result in a temporary file (`outfile`), but also return the result as a `nifti` object `ret`, as `retimg = TRUE`.  We will use the first volume as the reference as is the default in FSL.  *Note* FSL is zero-indexed so the first volume is the zero-ith index:
 
 ```{r}
-float_file = camino_image2voxel(infile = img, 
-                   outputdatatype = "float")
+float_fname = camino_image2voxel(infile = img_fname, 
+                                outputdatatype = "float")
 ```
 
 Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected `nifti` object.
 
 
+# Fit the diffusion tensor
+
+```{r}
+mask_fname = grep("mask", out, value = TRUE)
+model_fname = camino_modelfit(
+  infile = float_fname,
+  scheme = scheme_file,
+  mask = mask_fname,
+  outputdatatype = "double"
+  )
+```
+
+
+## Getting FA vlaues
+
+```{r}
+fa_fname = camino_fa(infile = model_fname)
+```
+
+### Converting FA values back into an image
+
+
+```{r}
+library(fslr)
+fa_img_name = camino_voxel2image(infile = fa_fname, 
+                            header = img_fname, 
+                            gzip = TRUE, 
+                            components = 1)
+fa_img = readnii(fa_img_name)
+```
+
+### Converting with piping
+
+We can chain Camino commands using the `magrittr` pipe operation (`%>%`):
+
+```{r}
+library(magrittr)
+fa_img2 = model_fname %>% 
+  camino_fa() %>% 
+  camino_voxel2image(header = img_fname, gzip = TRUE, components = 1) %>% 
+  readnii
+all.equal(fa_img2, fa_img2)
+```
+
+
+# Export DTs to NIfTI
+
+```{r}
+nifti_dt = camino_dt2nii(infile = model_fname, 
+              inputmodel = "dt",
+              header = img_fname, 
+              gzip = TRUE, 
+              )
+print(all(file.exists(nifti_dt)))
+print(nifti_dt)
+```

@@ -4,10 +4,10 @@
 \alias{camino_modelfit}
 \title{Wrapper for Camino \code{modelfit} function}
 \usage{
-camino_modelfit(infile, outfile = NULL, scheme, mask, model = c("ldt", "dt",
+camino_modelfit(infile, outfile = NULL, scheme, mask, model = c("dt", "ldt",
   "nldt_pos", "nldt", "ldt_wtd"), inputdatatype = c("float", "char", "short",
   "int", "long", "double"), maskdatatype = c("float", "char", "short", "int",
-  "long", "double"), outdatatype = c("double", "float", "char", "short",
+  "long", "double"), outputdatatype = c("double", "float", "char", "short",
   "int", "long"), startpoint = NULL, outliermap = NULL, noisemap = NULL,
   residualmap = NULL, sigma = NULL, bgthresh = NULL, csfthresh = NULL,
   verbose = TRUE)
@@ -27,8 +27,8 @@ Raw binary files must be big endian; the default data type is 16-bit shorts,
  number of values in background voxels and foreground voxels.
  Each value is zero in background voxels apart from the exit code which is -1.}
 
-\item{model}{Type of model used: 1-tensor: ldt (linear diffusion tensor, default),
-dt - same as ldt
+\item{model}{Type of model used: 1-tensor: dt (linear diffusion tensor, default),
+ldt - same as dt
 nldt_pos (nonlinear optimization, constrained to be positive semi-definite),
 nldt     (unconstrained nonlinear optimization),
 ldt_wtd  (weighted linear)}
@@ -38,7 +38,7 @@ ldt_wtd  (weighted linear)}
 \item{maskdatatype}{Specifies the type of the mask file;
 must be big-endian byte ordering. Ignored if a NIFTI mask is used.}
 
-\item{outdatatype}{Output data type, ignored if \code{outfile} is specified.}
+\item{outputdatatype}{Output data type, ignored if \code{outfile} is specified.}
 
 \item{startpoint}{Specifies the starting values for the model.}
 
