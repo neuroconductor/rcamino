@@ -1,5 +1,6 @@
 ---
 title: "DTI Data in Camino"
+author: "John Muschelli"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
