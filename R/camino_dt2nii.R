@@ -61,7 +61,7 @@ camino_dt2nii = function(infile,
     opts = c(opts, "-gzip" = "")
     ext = ".nii.gz"
   }
-  opts = paste(names(opts), opts, collapse = " ")
+  opts = collapse_opts(opts)
 
   cmd = camino_cmd("dt2nii")
   cmd = paste(cmd, opts)
