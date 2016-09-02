@@ -15,7 +15,7 @@ knitr::opts_chunk$set(comment = "")
 ```
 
 # Resources and Goals
-Much of this work has been adapted by the FSL guide for DTI reconstruction: [http://camino.cs.ucl.ac.uk/index.php?n=Tutorials.DTI](http://camino.cs.ucl.ac.uk/index.php?n=Tutorials.DTI).  We will show you a few steps that have been implemented in `caminor`: `camino_pointset2scheme`, `camino_modelfit`, `camino_fa`, `camino_md`, and `camino_dteig`.  
+Much of this work has been adapted by the FSL guide for DTI reconstruction: [http://camino.cs.ucl.ac.uk/index.php?n=Tutorials.DTI](http://camino.cs.ucl.ac.uk/index.php?n=Tutorials.DTI).  We will show you a few steps that have been implemented in `rcamino`: `camino_pointset2scheme`, `camino_modelfit`, `camino_fa`, `camino_md`, and `camino_dteig`.  
 
 # Data Location
 The data located in this tutorial is located at [http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip](http://cmic.cs.ucl.ac.uk/camino//uploads/Tutorials/example_dwi.zip).  It contains 3 files:
@@ -40,7 +40,7 @@ As `dtifit` requires the b-values and b-vectors to be separated, and this data h
 
 
 ```{r bvecs}
-library(caminor)
+library(rcamino)
 b_data_file = grep("[.]txt$", files, value = TRUE)
 scheme_file = camino_pointset2scheme(infile = b_data_file,
                                 bvalue = 1e9)

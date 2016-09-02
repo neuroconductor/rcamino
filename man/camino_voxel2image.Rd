@@ -9,7 +9,7 @@ camino_voxel2image(infile, header, outputroot = NULL, inputdatatype = NULL,
   outputvector = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{infile}{Output from \code{\link{camino_modelfit}}}
+\item{infile}{Input file (double, float, etc.)}
 
 \item{header}{NIfTI image with header information}
 

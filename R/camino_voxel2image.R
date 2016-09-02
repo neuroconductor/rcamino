@@ -1,6 +1,6 @@
 #' @title Wrapper for Camino \code{voxel2image} function
 #' @description Performs the Camino \code{voxel2image} function
-#' @param infile Output from \code{\link{camino_modelfit}}
+#' @param infile Input file (double, float, etc.)
 #' @param header NIfTI image with header information
 #' @param outputroot Output file root. If there is one component, or output is to a vector,
 #' the output image is called root.ext, otherwise output is numbered by component.

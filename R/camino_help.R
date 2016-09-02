@@ -8,7 +8,7 @@
 #' @examples
 #' camino_help("voxel2scanner")
 camino_help = function(funcname, ...){
-  man_fol = system.file(file.path("camino", "man"), package = "caminor")
+  man_fol = system.file(file.path("camino", "man"), package = "rcamino")
   cmd = sprintf("man -M %s %s", man_fol, funcname)
   system(cmd, ...)
 }
@@ -25,7 +25,7 @@ camino_help = function(funcname, ...){
 #' read_camino_helpfile("voxel2scanner")
 read_camino_helpfile = function(funcname){
   man_fol = system.file(file.path("camino", "man", "man1"),
-                        package = "caminor")
+                        package = "rcamino")
   funcname = paste0(funcname, ".1")
   file = file.path(man_fol, funcname)
   if (file.exists(file)) {

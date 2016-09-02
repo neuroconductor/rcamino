@@ -25,6 +25,7 @@
 #' This option has no effect if your gradient directions have unit magnitude.
 #' It should  only be  used  if your scanner does not normalize the
 #' gradient directions.
+#' @param verbose Print diagnostic messages
 #' @export
 camino_fsl2scheme = function(
   bvecs,
@@ -38,7 +39,8 @@ camino_fsl2scheme = function(
   interleave = FALSE,
   zerobval = NULL,
   numscans = NULL,
-  usegradmod = FALSE
+  usegradmod = FALSE,
+  verbose = TRUE
 ) {
 
 
@@ -77,6 +79,10 @@ camino_fsl2scheme = function(
   cmd = camino_cmd("fsl2scheme")
   cmd = paste(cmd, opts, " > ", outfile)
 
+  if (verbose) {
+    message(cmd)
+  }
+  res = system(cmd)
   return(outfile)
 }
 # .B fsl2scheme

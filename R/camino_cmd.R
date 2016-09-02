@@ -7,5 +7,5 @@
 #' @examples
 #' camino_cmd("voxel2scanner")
 camino_cmd = function(funcname){
-  system.file(file.path("camino", "bin", funcname), package = "caminor")
+  system.file(file.path("camino", "bin", funcname), package = "rcamino")
 }
