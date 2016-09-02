@@ -14,6 +14,7 @@
 #' the maximum order. The program will not consider a higher order
 #' model unless the result of the F-test is smaller than the
 #' relevant threshold.
+#' @param verbose print diagnostic messages
 #' @export
 camino_vcthreshselect = function(infile,
                                  datadims,

@@ -26,6 +26,8 @@ Must be a positive even number. Default is 4.}
 the maximum order. The program will not consider a higher order
 model unless the result of the F-test is smaller than the
 relevant threshold.}
+
+\item{verbose}{print diagnostic messages}
 }
 \description{
 Performs the Camino \code{vcthreshselect} function

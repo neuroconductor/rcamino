@@ -14,6 +14,10 @@ camino_fsl2scheme(bvecs, bvals, outfile = NULL, diffusiontime = NULL,
 
 \item{bvals}{The file containing the b-values.}
 
+\item{outfile}{output filename for fsl scheme file}
+
+\item{diffusiontime}{Diffusion time in seconds}
+
 \item{bscale}{Scaling  factor  to  convert  the b-values into different units.
 Default is 10^6.}
 
@@ -45,6 +49,9 @@ It should  only be  used  if your scanner does not normalize the
 gradient directions.}
 
 \item{verbose}{Print diagnostic messages}
+}
+\value{
+Output filename
 }
 \description{
 Performs the Camino \code{fsl2scheme} function

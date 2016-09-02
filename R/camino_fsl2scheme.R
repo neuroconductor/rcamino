@@ -3,6 +3,8 @@
 #'
 #' @param bvecs The file containing the b-vectors.
 #' @param bvals The file containing the b-values.
+#' @param outfile output filename for fsl scheme file
+#' @param diffusiontime Diffusion time in seconds
 #' @param bscale Scaling  factor  to  convert  the b-values into different units.
 #' Default is 10^6.
 #' @param flipx Negate the x component of all the vectors.
@@ -26,6 +28,8 @@
 #' It should  only be  used  if your scanner does not normalize the
 #' gradient directions.
 #' @param verbose Print diagnostic messages
+#' @return Output filename
+#'
 #' @export
 camino_fsl2scheme = function(
   bvecs,
