@@ -3,6 +3,8 @@
 
 inst/camino/tmp.txt
 
+src/camino_orig\.zip
+
 function_maker\.R
 camino_generic_function\.R
 
