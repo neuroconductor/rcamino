@@ -9,7 +9,7 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports:
-  fslr
+  neurobase
 Suggests:
   magrittr,
   knitr,
@@ -17,3 +17,4 @@ Suggests:
 SystemRequirements:	Java JDK 1.7 or higher
 RoxygenNote: 5.0.1.9000
 VignetteBuilder: knitr
+Remotes: muschellij2/neurobase

@@ -55,7 +55,7 @@ img_fname = grep("4Ddwi_b1000", files, value = TRUE)
 
 
 # Running Image Conversion 
-Here, we will run an eddy current correction using FSL's `eddy_correct` through `fslr`.  We will save the result in a temporary file (`outfile`), but also return the result as a `nifti` object `ret`, as `retimg = TRUE`.  We will use the first volume as the reference as is the default in FSL.  *Note* FSL is zero-indexed so the first volume is the zero-ith index:
+ We will save the result in a temporary file (`outfile`), but also return the result as a `nifti` object `ret`, as `retimg = TRUE`.  We will use the first volume as the reference as is the default in FSL.  *Note* FSL is zero-indexed so the first volume is the zero-ith index:
 
 ```{r}
 float_fname = camino_image2voxel(infile = img_fname, 
@@ -88,7 +88,7 @@ fa_fname = camino_fa(infile = model_fname)
 
 
 ```{r}
-library(fslr)
+library(neurobase)
 fa_img_name = camino_voxel2image(infile = fa_fname, 
                             header = img_fname, 
                             gzip = TRUE, 

@@ -4,7 +4,7 @@
 #' @param outfile Output filename for camino format
 #' @param outputdatatype Output data type
 #' @param verbose Print diagnostic messages
-#' @importFrom fslr checkimg
+#' @importFrom neurobase checkimg
 #'
 #' @export
 camino_image2voxel = function(infile,
