@@ -13,8 +13,9 @@ Imports:
 Suggests:
   magrittr,
   knitr,
-  rmarkdown
-SystemRequirements:	Java JDK 1.7 or higher
+  rmarkdown,
+    covr
+SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 5.0.1.9000
 VignetteBuilder: knitr
 Remotes: muschellij2/neurobase
