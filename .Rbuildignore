@@ -8,3 +8,4 @@ camino_generic_function\.R
 ^\.git
 ^\.travis\.yml$
 ^codecov\.yml$
+^wercker\.yml$
