@@ -67,6 +67,8 @@ camino_fsl2scheme = function(
   }
 
   opts = c(
+    "-bvecfile" = bvecs,
+    "-bvalfile" = bvals,
     "-diffusiontime" = diffusiontime,
     "-bscale" = bscale,
     "-zerobval" = zerobval,

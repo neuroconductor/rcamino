@@ -14,7 +14,7 @@ Suggests:
   magrittr,
   knitr,
   rmarkdown,
-    covr
+  covr
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 5.0.1.9000
 VignetteBuilder: knitr
