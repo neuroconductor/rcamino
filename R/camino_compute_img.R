@@ -8,6 +8,7 @@
 #' @param ... additional arguments to pass to \code{\link{camino_compute}}
 #'
 #' @export
+#' @importFrom neurobase readnii
 camino_compute_img = function(
   infile,
   header,
@@ -19,6 +20,7 @@ camino_compute_img = function(
   img = camino_voxel2image(
     infile = tmp,
     header = header)
+  img = neurobase::readnii(img)
   return(img)
 }
 
