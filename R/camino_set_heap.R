@@ -9,7 +9,15 @@
 camino_set_heap = function(heap_size = 4000){
   # options("CAMINO_HEAP_SIZE" = heap_size)
   Sys.setenv("CAMINO_HEAP_SIZE" = heap_size)
-  # -Xmx
+  java_max = paste0("-Xmx", heap_size, "m")
+  j_opts = Sys.getenv("_JAVA_OPTIONS")
+  ss = strsplit(j_opts, " ")[[1]]
+  ind = grepl("-Xmx", ss)
+  if (any(ind)) {
+    ss[ind] = java_max
+  }
+  ss = paste(ss, collapse = " ")
+  Sys.setenv("_JAVA_OPTIONS" = ss)
   return(invisible(NULL))
 }
 
