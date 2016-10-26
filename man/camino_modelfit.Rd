@@ -10,7 +10,7 @@ camino_modelfit(infile, outfile = NULL, scheme, mask, model = c("dt", "ldt",
   "long", "double"), outputdatatype = c("double", "float", "char", "short",
   "int", "long"), startpoint = NULL, outliermap = NULL, noisemap = NULL,
   residualmap = NULL, sigma = NULL, bgthresh = NULL, csfthresh = NULL,
-  verbose = TRUE)
+  gradadj = NULL, verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input 4D image}
@@ -64,6 +64,8 @@ apart from the exit code which is -1.}
 \item{csfthresh}{Sets a threshold on the average q=0 measurement to
 determine which voxels are CSF. This program does not treat CSF voxels any
 different to other voxels.}
+
+\item{gradadj}{file of gradient adjustments (relevant for HCP).}
 
 \item{verbose}{print diagnostic messages}
 }

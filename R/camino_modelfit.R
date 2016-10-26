@@ -37,6 +37,7 @@
 #' @param csfthresh Sets a threshold on the average q=0 measurement to
 #' determine which voxels are CSF. This program does not treat CSF voxels any
 #' different to other voxels.
+#' @param gradadj file of gradient adjustments (relevant for HCP).
 #' @param verbose print diagnostic messages
 #' @export
 camino_modelfit = function(infile,
@@ -57,11 +58,21 @@ camino_modelfit = function(infile,
                            sigma = NULL,
                            bgthresh = NULL,
                            csfthresh = NULL,
+                           gradadj = NULL,
                            verbose = TRUE
 ) {
   # Checking Inputs
   infile = checkimg(infile)
   mask = checkimg(mask)
+  checkimg_null = function(x){
+    if (is.null(x)) {
+      return(x)
+    } else {
+      return(checkimg(x))
+    }
+  }
+  gradadj = checkimg_null(gradadj)
+
   inputdatatype = match.arg(inputdatatype)
   maskdatatype = match.arg(maskdatatype)
   outputdatatype = match.arg(outputdatatype)
@@ -70,6 +81,7 @@ camino_modelfit = function(infile,
     outfile = tempfile(fileext = paste0(".B", outputdatatype))
   }
 
+  names(scheme) = NULL
   opts = c("-inputfile" = shQuote(infile),
            "-outputfile" = shQuote(outfile),
            "-inputdatatype" = inputdatatype,
@@ -83,7 +95,8 @@ camino_modelfit = function(infile,
            "-residualmap" = residualmap,
            "-sigma" = sigma,
            "-bgthresh" = bgthresh,
-           "-csfthresh" = csfthresh
+           "-csfthresh" = csfthresh,
+           "-gradadj" = gradadj
   )
   opts = paste(names(opts), opts, collapse = " ")
 

@@ -1,7 +1,7 @@
 Package: rcamino
 Type: Package
 Title: Port of Camino Software
-Version: 0.1.5.1
+Version: 0.2.0
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Camino is an open-source software toolkit for diffusion MRI processing.
