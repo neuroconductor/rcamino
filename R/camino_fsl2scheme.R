@@ -66,6 +66,13 @@ camino_fsl2scheme = function(
     bvals = tfile
   }
 
+  names(bvecs) = names(bvals) = NULL
+  names(diffusiontime) = names(bscale) = NULL
+  names(zerobval) = names(numscans) = NULL
+  names(flipx) = names(usegradmod) = NULL
+  names(flipy) = names(interleave) = NULL
+  names(flipz) = NULL
+
   opts = c(
     "-bvecfile" = bvecs,
     "-bvalfile" = bvals,
@@ -74,6 +81,8 @@ camino_fsl2scheme = function(
     "-zerobval" = zerobval,
     "-numscans" = numscans
   )
+
+
   log_opts = c("-flipx" = flipx,
                "-flipy" = flipy,
                "-flipz" = flipz,
