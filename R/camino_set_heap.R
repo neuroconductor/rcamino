@@ -9,6 +9,7 @@
 camino_set_heap = function(heap_size = 4000){
   # options("CAMINO_HEAP_SIZE" = heap_size)
   Sys.setenv("CAMINO_HEAP_SIZE" = heap_size)
+  # -Xmx
   return(invisible(NULL))
 }
 

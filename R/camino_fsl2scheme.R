@@ -80,6 +80,7 @@ camino_fsl2scheme = function(
                "-usegradmod" = usegradmod,
                "-interleave" = interleave)
   log_opts = collapse_log_opts(log_opts)
+  opts = collapse_opts(opts)
   opts = paste(opts, log_opts)
 
   cmd = camino_cmd("fsl2scheme")
