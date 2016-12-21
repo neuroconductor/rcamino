@@ -72,4 +72,3 @@ different to other voxels.}
 \description{
 Performs the Camino \code{modelfit} function
 }
-

@@ -21,4 +21,3 @@ camino_adcfit(infile, scheme, outfile = NULL, outputdatatype = c("double",
 \description{
 Performs the Camino \code{adcfit} function
 }
-

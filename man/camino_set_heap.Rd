@@ -15,4 +15,3 @@ Set Camino Heap Size to Increase Memory
 \examples{
 camino_set_heap(heap_size = 4000)
 }
-

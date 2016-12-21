@@ -18,4 +18,3 @@ camino_fa_img(infile, header, ...)
 Performs the Camino \code{fa} function to compute
 Fractional Anisotropy maps
 }
-

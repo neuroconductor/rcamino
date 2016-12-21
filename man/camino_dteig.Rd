@@ -26,4 +26,3 @@ The data type can be any of the following strings:
 \description{
 Performs the Camino \code{dteig} function
 }
-

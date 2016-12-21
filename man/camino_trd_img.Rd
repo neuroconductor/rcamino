@@ -18,4 +18,3 @@ camino_trd_img(infile, header, ...)
 Performs the Camino \code{trd} function to compute
 Tensor Trace maps
 }
-

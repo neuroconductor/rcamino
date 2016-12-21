@@ -41,4 +41,3 @@ relevant threshold.}
 \description{
 Performs the Camino \code{voxelclassify} function
 }
-

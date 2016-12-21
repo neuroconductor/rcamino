@@ -19,4 +19,3 @@ Wraps around \code{\link{camino_compute}} and
 \code{\link{camino_voxel2image}} to compute the output then make it
 back into an image
 }
-

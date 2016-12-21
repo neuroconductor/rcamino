@@ -19,4 +19,3 @@ camino_image2voxel(infile, outfile = NULL, outputdatatype = c("float",
 \description{
 Performs the Camino \code{image2voxel} function
 }
-

@@ -32,4 +32,3 @@ relevant threshold.}
 \description{
 Performs the Camino \code{vcthreshselect} function
 }
-

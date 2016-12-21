@@ -18,4 +18,3 @@ Get Camino Heap Size
 \examples{
 camino_get_heap()
 }
-

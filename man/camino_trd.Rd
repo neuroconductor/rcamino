@@ -13,4 +13,3 @@ camino_trd(...)
 Performs the Camino \code{trd} function to compute
 Tensor Trace maps
 }
-
