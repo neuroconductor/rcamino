@@ -12,3 +12,4 @@ warnings_are_errors: true
 r_check_args: --as-cran
 r:
 - release
+
