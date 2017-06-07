@@ -18,4 +18,3 @@ Wrapper for finding the path for the Camino function
 \examples{
 camino_cmd("voxel2scanner")
 }
-

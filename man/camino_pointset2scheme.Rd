@@ -22,4 +22,3 @@ Output filename
 \description{
 Performs the Camino \code{pointset2scheme} function
 }
-

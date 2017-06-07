@@ -13,4 +13,3 @@ camino_fa(...)
 Performs the Camino \code{fa} function to compute
 Fractional Anisotropy maps
 }
-

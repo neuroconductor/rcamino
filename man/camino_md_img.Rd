@@ -18,4 +18,3 @@ camino_md_img(infile, header, ...)
 Performs the Camino \code{md} function to compute
 Mean Diffusivity maps
 }
-

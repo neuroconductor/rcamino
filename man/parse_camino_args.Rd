@@ -18,4 +18,3 @@ Wrapper for finding the arguments for the Camino function
 \examples{
 read_camino_helpfile("voxel2scanner")
 }
-

@@ -29,4 +29,3 @@ float, char, short, int, long, double}
 Performs the Camino \code{fa} and \code{md} functions to
 compute mean diffusivity (MD) and fractional anisotropy (FA) markers
 }
-

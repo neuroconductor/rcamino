@@ -15,6 +15,8 @@ camino_set_heap = function(heap_size = 4000){
   ind = grepl("-Xmx", ss)
   if (any(ind)) {
     ss[ind] = java_max
+  } else {
+    ss = c(ss, java_max)
   }
   ss = paste(ss, collapse = " ")
   Sys.setenv("_JAVA_OPTIONS" = ss)

@@ -20,4 +20,3 @@ Wrapper for finding the manual for the Camino function
 \examples{
 camino_help("voxel2scanner")
 }
-

@@ -19,4 +19,3 @@ and reading it into a text file
 \examples{
 read_camino_helpfile("voxel2scanner")
 }
-

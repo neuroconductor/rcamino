@@ -16,4 +16,3 @@ String
 \description{
 Simple wrapper to collapse options into a string for Camino
 }
-

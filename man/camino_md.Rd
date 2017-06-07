@@ -13,4 +13,3 @@ camino_md(...)
 Performs the Camino \code{md} function to compute
 Mean Diffusivity maps
 }
-
