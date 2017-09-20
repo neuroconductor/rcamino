@@ -50,6 +50,7 @@ scheme_file = camino_pointset2scheme(infile = b_data_file,
 Here we ensure that the number of b-values/b-vectors is the same as the number of time points in the 4D image.
 
 ```{r check_img}
+library(neurobase)
 img_fname = grep("4Ddwi_b1000", files, value = TRUE)
 img = readnii(img_fname)
 ntim(img)

@@ -1,0 +1,4 @@
+#!/bin/sh
+rm -rf inst/camino/*
+# mkdir -p inst/camino/bin
+rm -rf src/camino

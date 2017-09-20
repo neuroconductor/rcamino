@@ -19,6 +19,6 @@ Suggests:
   rmarkdown,
   covr
 SystemRequirements: Java JDK 1.7 or higher
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
 Remotes: muschellij2/neurobase
