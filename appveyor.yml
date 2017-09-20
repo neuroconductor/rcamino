@@ -13,6 +13,11 @@ install:
 cache:
   - C:\RLibrary
 
+environment:
+  global:
+    WARNINGS_ARE_ERORRS: 1
+    USE_RTOOLS: true
+    R_CHECK_INSTALL_ARGS: --install-args=--build --no-multiarch
 # Adapt as necessary starting from here
 
 build_script:
