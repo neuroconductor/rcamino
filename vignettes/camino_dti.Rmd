@@ -51,6 +51,12 @@ Here we ensure that the number of b-values/b-vectors is the same as the number o
 
 ```{r check_img}
 img_fname = grep("4Ddwi_b1000", files, value = TRUE)
+img = readnii(img_fname)
+ntim(img)
+grads = readLines(b_data_file)
+length(grads)
+# cleanup
+rm(list= "img"); gc()
 ```
 
 
@@ -106,7 +112,7 @@ fa_img2 = model_fname %>%
   camino_fa() %>% 
   camino_voxel2image(header = img_fname, gzip = TRUE, components = 1) %>% 
   readnii
-all.equal(fa_img2, fa_img2)
+all.equal(fa_img, fa_img2)
 ```
 
 ### Visualizing FA images
