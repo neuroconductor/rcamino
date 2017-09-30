@@ -16,6 +16,6 @@ Suggests:  magrittr,  knitr,  rmarkdown,  covr
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
+Remotes: neuroconductor/neurobase@f71ec2db52af7f164f2cd55a11f696ce4bf383a7
 biocViews:
-Remotes: neuroconductor/neurobase@7cb4297dcd60ec589e517ce16ecd952fa73e5b44
 
