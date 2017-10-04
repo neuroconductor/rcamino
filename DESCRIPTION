@@ -1,7 +1,7 @@
 Package: rcamino
 Type: Package
 Title: Port of the Camino Software
-Version: 0.4.1
+Version: 0.5.2
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software toolkit for 
@@ -11,7 +11,7 @@ Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software t
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports:  neurobase
+Imports:  neurobase,  tools
 Suggests:  magrittr,  knitr,  rmarkdown,  covr
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
