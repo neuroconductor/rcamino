@@ -4,13 +4,16 @@
 \alias{camino_compute_img}
 \title{Wrapper for Computing Outputs into image}
 \usage{
-camino_compute_img(infile, header, ...)
+camino_compute_img(infile, header, retimg = TRUE, ...)
 }
 \arguments{
 \item{infile}{Output from \code{\link{camino_modelfit}}}
 
 \item{header}{NIfTI image for header information to pass to
 \code{\link{camino_voxel2image}}}
+
+\item{retimg}{Should an image be returned?  This will
+be read in using \code{\link{readnii}}}
 
 \item{...}{additional arguments to pass to \code{\link{camino_compute}}}
 }

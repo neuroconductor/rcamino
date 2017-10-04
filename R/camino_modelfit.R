@@ -106,6 +106,9 @@ camino_modelfit = function(infile,
     message(cmd)
   }
   res = system(cmd)
+  if (res != 0) {
+    warning("Result is non-zero, may not work")
+  }
   return(outfile)
 }
 # modelfit -inputfile dwi.Bfloat -schemefile 4Ddwi_b1000_bvector.scheme -model ldt -bgmask brain_mask.nii.gz \
