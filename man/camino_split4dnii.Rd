@@ -4,8 +4,8 @@
 \alias{camino_split4dnii}
 \title{Wrapper for Camino \code{split4dnii} split4dnii}
 \usage{
-camino_split4dnii(infile, output_root = tempfile(), schemefile = NULL,
-  verbose = TRUE)
+camino_split4dnii(infile, output_root = tempfile(fileext = "_"),
+  schemefile = NULL, verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input 4D file to split}

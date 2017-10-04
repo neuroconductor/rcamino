@@ -2,10 +2,15 @@
 % Please edit documentation in R/camino_image2voxel.R
 \name{camino_image2voxel}
 \alias{camino_image2voxel}
+\alias{camino_imagelist2voxel}
 \title{Wrapper for Camino \code{image2voxel} function}
 \usage{
 camino_image2voxel(infile, outfile = NULL, outputdatatype = c("float",
   "char", "short", "int", "long", "double"), verbose = TRUE)
+
+camino_imagelist2voxel(imagelist, imageprefix = NULL, outfile = NULL,
+  outputdatatype = c("float", "char", "short", "int", "long", "double"),
+  verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input 4D image}
@@ -15,6 +20,12 @@ camino_image2voxel(infile, outfile = NULL, outputdatatype = c("float",
 \item{outputdatatype}{Output data type}
 
 \item{verbose}{Print diagnostic messages}
+
+\item{imagelist}{Text file of list of image names or character vector
+of image names}
+
+\item{imageprefix}{Directory of the images.  Will use the dirname if
+not specified (recommended)}
 }
 \description{
 Performs the Camino \code{image2voxel} function

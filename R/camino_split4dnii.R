@@ -14,7 +14,7 @@
 #' @importFrom tools file_ext
 camino_split4dnii = function(
   infile,
-  output_root = tempfile(),
+  output_root = tempfile(fileext = "_"),
   schemefile = NULL,
   verbose = TRUE
 ) {
@@ -32,7 +32,7 @@ camino_split4dnii = function(
   ext = tools::file_ext(low_file)
   img_ext = neurobase::parse_img_ext(infile)
   if (ext == "gz") {
-    img_ext = paste0(img_ext, ext)
+    img_ext = paste0(img_ext, ".", ext)
   }
 
   opts = c(
