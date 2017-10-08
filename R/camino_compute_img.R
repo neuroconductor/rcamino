@@ -5,6 +5,8 @@
 #' @param infile Output from \code{\link{camino_modelfit}}
 #' @param header NIfTI image for header information to pass to
 #' \code{\link{camino_voxel2image}}
+#' @param retimg Should an image be returned?  This will
+#' be read in using \code{\link{readnii}}
 #' @param ... additional arguments to pass to \code{\link{camino_compute}}
 #'
 #' @export
@@ -12,6 +14,7 @@
 camino_compute_img = function(
   infile,
   header,
+  retimg = TRUE,
   ...) {
 
   tmp = camino_compute(
@@ -20,7 +23,9 @@ camino_compute_img = function(
   img = camino_voxel2image(
     infile = tmp,
     header = header)
-  img = neurobase::readnii(img)
+  if (retimg) {
+    img = neurobase::readnii(img)
+  }
   return(img)
 }
 

@@ -44,7 +44,7 @@ camino_modelfit = function(infile,
                            outfile = NULL,
                            scheme,
                            mask,
-                           model = c("dt", "ldt", "nldt_pos", "nldt", "ldt_wtd"),
+                           model = c("dt", "ldt", "nldt_pos", "nldt", "ldt_wtd", "restore"),
                            inputdatatype = c("float", "char", "short",
                                               "int", "long", "double"),
                            maskdatatype = c("float", "char", "short",
@@ -72,6 +72,7 @@ camino_modelfit = function(infile,
     }
   }
   gradadj = checkimg_null(gradadj)
+  outliermap = checkimg_null(outliermap)
 
   inputdatatype = match.arg(inputdatatype)
   maskdatatype = match.arg(maskdatatype)
@@ -106,6 +107,9 @@ camino_modelfit = function(infile,
     message(cmd)
   }
   res = system(cmd)
+  if (res != 0) {
+    warning("Result is non-zero, may not work")
+  }
   return(outfile)
 }
 # modelfit -inputfile dwi.Bfloat -schemefile 4Ddwi_b1000_bvector.scheme -model ldt -bgmask brain_mask.nii.gz \

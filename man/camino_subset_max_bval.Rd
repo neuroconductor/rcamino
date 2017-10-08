@@ -2,9 +2,12 @@
 % Please edit documentation in R/camino_subset_max_bval.R
 \name{camino_subset_max_bval}
 \alias{camino_subset_max_bval}
+\alias{camino_subset_max_bval_scheme}
 \title{Subset Maximum B-value}
 \usage{
 camino_subset_max_bval(infile, schemefile, max_bval = NULL, verbose = TRUE)
+
+camino_subset_max_bval_scheme(schemefile, max_bval = NULL, verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input 4D image}

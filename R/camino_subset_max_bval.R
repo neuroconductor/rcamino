@@ -14,14 +14,54 @@ camino_subset_max_bval = function(
   max_bval = NULL,
   verbose = TRUE) {
 
+
+  L = camino_subset_max_bval_scheme(
+    schemefile = schemefile,
+    max_bval = max_bval,
+    verbose = verbose)
+
+  n_files = L$n_files
+  new_scheme_file = L$scheme
+  keep_files = L$keep_files
+
+  infile = checkimg(infile)
+  sub_4d_files = camino_split4dnii(
+    infile = infile,
+    verbose = verbose)
+
+  stopifnot(length(sub_4d_files) == n_files)
+  sub_4d_files = sub_4d_files[keep_files]
+
+  imagelist = sub_4d_files
+
+  output_voxelfile = camino_imagelist2voxel(
+    imagelist = imagelist,
+    verbose = verbose)
+
+  L = list(image = output_voxelfile,
+           scheme = new_scheme_file)
+
+  return(L)
+}
+
+
+
+#' @export
+#' @rdname camino_subset_max_bval
+camino_subset_max_bval_scheme = function(
+  schemefile,
+  max_bval = NULL,
+  verbose = TRUE) {
+
   if (is.null(max_bval)) {
     stop("Maximum bvalue must be greater than zero")
   }
 
-  scheme_df = utils::read.fwf(schemefile,
-                              widths = rep(12, 4),
-                              header = FALSE,
-                              skip = 2)
+  scheme_df = utils::read.fwf(
+    schemefile,
+    widths = rep(12, 4),
+    header = FALSE,
+    skip = 2)
   # drop last row
   scheme_df = scheme_df[ -nrow(scheme_df),]
 
@@ -46,23 +86,9 @@ camino_subset_max_bval = function(
   scheme_data = scheme_data[ind]
   new_scheme_file = tempfile(fileext = ".scheme")
   writeLines(scheme_data, con = new_scheme_file)
-
-  infile = checkimg(infile)
-  sub_4d_files = camino_split4dnii(
-    infile = infile,
-    verbose = verbose)
-
-  stopifnot(length(sub_4d_files) == n_files)
-  sub_4d_files = sub_4d_files[keep_files]
-
-  imagelist = sub_4d_files
-
-  output_voxelfile = camino_imagelist2voxel(
-    imagelist = imagelist,
-    verbose = verbose)
-
-  L = list(image = output_voxelfile,
-           scheme = new_scheme_file)
-
+  L = list(scheme = new_scheme_file,
+           keep_files = keep_files,
+           n_files = n_files,
+           scheme_data = scheme_df)
   return(L)
 }
