@@ -55,7 +55,13 @@ camino_dteig = function(infile,
   if (is.null(outfile)) {
     outfile = tempfile(fileext = paste0(".B", outputdatatype))
   }
+  xoutfile = outfile
   outfile = shQuote(outfile)
+
+  infile = unname(infile)
+  inputmodel = unname(inputmodel)
+  outputdatatype = unname(outputdatatype)
+  maxcomponents = unname(maxcomponents)
 
   opts = c( "-inputfile" = infile,
             "-inputmodel" = inputmodel,
@@ -70,11 +76,13 @@ camino_dteig = function(infile,
     message(cmd)
   }
   res = system(cmd)
-
+  if (res != 0) {
+    warning("Result is non-zero, may not work")
+  }
   #########################################
   # Construction output filenames
   #########################################
-  return(outfile)
+  return(xoutfile)
 }
 
 

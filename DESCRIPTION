@@ -1,7 +1,7 @@
 Package: rcamino
 Type: Package
 Title: Port of the Camino Software
-Version: 0.5.5
+Version: 0.5.6
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software toolkit for 
