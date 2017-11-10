@@ -6,7 +6,8 @@
 \usage{
 camino_dteig(infile, outfile = NULL, inputmodel = c("dt", "twotensor",
   "threetensor", "multitensor"), outputdatatype = c("float", "byte", "short",
-  "int", "long", "double"), maxcomponents = NULL, verbose = TRUE)
+  "int", "long", "double"), maxcomponents = NULL, verbose = TRUE,
+  header = NULL)
 }
 \arguments{
 \item{infile}{Output from \code{\link{camino_modelfit}}}
@@ -22,6 +23,8 @@ The data type can be any of the following strings:
 \item{maxcomponents}{Maximum tensor components, for use with input model "multitensor".}
 
 \item{verbose}{print diagnostic messages}
+
+\item{header}{NIfTI image with header information}
 }
 \description{
 Performs the Camino \code{dteig} function

@@ -40,26 +40,27 @@
 #' @param gradadj file of gradient adjustments (relevant for HCP).
 #' @param verbose print diagnostic messages
 #' @export
-camino_modelfit = function(infile,
-                           outfile = NULL,
-                           scheme,
-                           mask,
-                           model = c("dt", "ldt", "nldt_pos", "nldt", "ldt_wtd", "restore"),
-                           inputdatatype = c("float", "char", "short",
-                                              "int", "long", "double"),
-                           maskdatatype = c("float", "char", "short",
-                                             "int", "long", "double"),
-                           outputdatatype = c("double", "float", "char", "short",
-                                            "int", "long"),
-                           startpoint = NULL,
-                           outliermap = NULL,
-                           noisemap = NULL,
-                           residualmap = NULL,
-                           sigma = NULL,
-                           bgthresh = NULL,
-                           csfthresh = NULL,
-                           gradadj = NULL,
-                           verbose = TRUE
+camino_modelfit = function(
+  infile,
+  outfile = NULL,
+  scheme,
+  mask,
+  model = c("dt", "ldt", "nldt_pos", "nldt", "ldt_wtd", "restore"),
+  inputdatatype = c("float", "char", "short",
+                    "int", "long", "double"),
+  maskdatatype = c("float", "char", "short",
+                   "int", "long", "double"),
+  outputdatatype = c("double", "float", "char", "short",
+                     "int", "long"),
+  startpoint = NULL,
+  outliermap = NULL,
+  noisemap = NULL,
+  residualmap = NULL,
+  sigma = NULL,
+  bgthresh = NULL,
+  csfthresh = NULL,
+  gradadj = NULL,
+  verbose = TRUE
 ) {
   # Checking Inputs
   infile = checkimg(infile)
@@ -83,6 +84,18 @@ camino_modelfit = function(infile,
   }
 
   names(scheme) = NULL
+  mask = unname(mask)
+  maskdatatype = unname(maskdatatype)
+  model = unname(model)
+  startpoint = unname(startpoint)
+  outliermap = unname(outliermap)
+  noisemap = unname(noisemap)
+  residualmap = unname(residualmap)
+  sigma = unname(sigma)
+  bgthresh = unname(bgthresh)
+  csfthresh = unname(csfthresh)
+  gradadj = unname(gradadj)
+
   opts = c("-inputfile" = shQuote(infile),
            "-outputfile" = shQuote(outfile),
            "-inputdatatype" = inputdatatype,
