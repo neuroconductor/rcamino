@@ -9,14 +9,17 @@
 #' "byte", "short", "int", "long", "float" or "double".
 #' @param maxcomponents Maximum tensor components, for use with input model "multitensor".
 #' @param verbose print diagnostic messages
+#' @param header NIfTI image with header information
 #' @export
-camino_dteig = function(infile,
-                        outfile = NULL,
-                        inputmodel = c("dt", "twotensor", "threetensor", "multitensor"),
-                        outputdatatype = c("float", "byte", "short",
-                                           "int", "long", "double"),
-                        maxcomponents = NULL,
-                        verbose = TRUE
+camino_dteig = function(
+  infile,
+  outfile = NULL,
+  inputmodel = c("dt", "twotensor", "threetensor", "multitensor"),
+  outputdatatype = c("float", "byte", "short",
+                     "int", "long", "double"),
+  maxcomponents = NULL,
+  verbose = TRUE,
+  header = NULL
 ) {
 
   infile = checkimg(infile)
@@ -48,12 +51,21 @@ camino_dteig = function(infile,
     }
   }
 
+
   #########################
   # Fixing types
   #########################
   outputdatatype = match.arg(outputdatatype)
+
+  if (!is.null(header)) {
+    header = checkimg(header)
+    ext = ".nii.gz"
+  } else {
+    ext = paste0(".B", outputdatatype)
+  }
+
   if (is.null(outfile)) {
-    outfile = tempfile(fileext = paste0(".B", outputdatatype))
+    outfile = tempfile(fileext = ext)
   }
   xoutfile = outfile
   outfile = shQuote(outfile)
@@ -68,16 +80,33 @@ camino_dteig = function(infile,
             "-outputdatatype" = outputdatatype,
             "-maxcomponents" = maxcomponents
   )
+
+    # can use nifti if header in there
+  if (!is.null(header)) {
+     header = unname(header)
+     opts = c(opts, "-header" = header)
+  }
   opts = paste(names(opts), opts, collapse = " ")
 
+
+  # don't need stdout if header in there
+  if (!is.null(header)) {
+    ending = "-outputfile"
+  } else {
+    ending = " > "
+  }
+
   cmd = camino_cmd("dteig")
-  cmd = paste(cmd, opts, " > ", outfile)
+  cmd = paste(cmd, opts, ending, outfile)
   if (verbose) {
     message(cmd)
   }
   res = system(cmd)
   if (res != 0) {
     warning("Result is non-zero, may not work")
+  }
+  if (!file.exists(xoutfile)) {
+    warning("Output file does not exist, may be error!")
   }
   #########################################
   # Construction output filenames

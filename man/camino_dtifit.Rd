@@ -38,7 +38,7 @@ ldt_wtd  (weighted linear)}
 or \code{\link{camino_modelfit}} or \code{\link{camino_dt2nii}}}
 }
 \value{
-List o f
+List of values and such
 }
 \description{
 Fit Model using Camino
@@ -60,6 +60,9 @@ bvals = sub$bvals
 bvecs = sub$bvecs
 inputmodel = "dt"
 verbose = TRUE
-camino_dtifit(infile = infile, bvecs = bvecs, bvals = bvals, mask = mask)
+args = list()
+camino_set_heap(heap_size = 10000)
+res = camino_dtifit(infile = infile, bvecs = bvecs,
+bvals = bvals, mask = mask, model = "dt", inputmodel = "dt")
 }
 }
