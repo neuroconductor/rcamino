@@ -1,7 +1,7 @@
 Package: rcamino
 Type: Package
 Title: Port of the Camino Software
-Version: 0.5.5
+Version: 0.6.1
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software toolkit for 
@@ -11,10 +11,17 @@ Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software t
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports: neurobase,  tools
-Suggests: magrittr,  knitr,  rmarkdown,  covr
+Imports:
+  neurobase,
+  tools,
+  methods
+Suggests:
+  magrittr,
+  knitr,
+  rmarkdown,
+  covr
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
-biocViews:
-Remotes: neuroconductor/neurobase@8c9dd1990b2940e1d15965f50d7d787dca9eceaf
+Remotes: neuroconductor/neurobase@f01883a16cfc382e98da1da7dc4329addcefad35
+biocViews: 
