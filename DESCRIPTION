@@ -24,4 +24,4 @@ SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
 biocViews: 
-Remotes: neuroconductor/neurobase@a53fba15ae930efab81484b9c5201a1fd9f13203
+Remotes: neuroconductor/neurobase@95b0e364a8d2f99e97ff2f79a7efb54b821bb43a
