@@ -1,0 +1,8 @@
+all:
+	${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe \
+	-e "utils::unzip('camino.zip')";
+	cd camino && make clean && make;
+	${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe copier.R
+
+clean:
+	${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe -e "unlink('camino', recursive = TRUE, force = TRUE)"

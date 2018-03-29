@@ -1,15 +1,7 @@
 all:
-	unzip -o camino.zip;
+	Rscript -e "utils::unzip('camino.zip')";
 	cd camino && make clean && make;
-	# cd camino && ls;
-	# cd ../ && ls;
-	mkdir -p ../inst/camino/;
-	# mkdir -p ../bin;
-	cp -R camino/* ../inst/camino/ ;
-	# cp -R camino/bin/* ../inst/camino/bin/ ;
-	# pwd;
-
+	Rscript copier.R
 
 clean:
-	rm -rf ./camino;
-	# rm -rf ../inst/*;
+	Rscript -e "unlink('camino', recursive = TRUE, force = TRUE)"
