@@ -4,24 +4,19 @@ Title: Port of the Camino Software
 Version: 0.6.2
 Author: John Muschelli <muschellij2@gmail.com>
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source software toolkit for 
-  magnetic resonance imaging ('MRI'), primarily diffusion tensor imaging ('DTI'). 
-  The goal is to be able to interface with 'Camino' completely in R and 
-  the functions execute a 'Camino' command and returns an R object.
+Description: 'Camino' (http://camino.cs.ucl.ac.uk/) is an open-source
+        software toolkit for magnetic resonance imaging ('MRI'),
+        primarily diffusion tensor imaging ('DTI'). The goal is to be
+        able to interface with 'Camino' completely in R and the
+        functions execute a 'Camino' command and returns an R object.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports:
-  neurobase,
-  tools,
-  methods
-Suggests:
-  magrittr,
-  knitr,
-  rmarkdown,
-  covr
+Imports: neurobase, tools, methods
+Suggests: magrittr, knitr, rmarkdown, covr
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
-biocViews: 
-Remotes: neuroconductor/neurobase@776416cd033579eaa534e9925c1d8848594b2701
+biocViews:
+Remotes:  
+    neuroconductor/neurobase@cf79914b4ae46d0e4d3d3d291798da99bdc496ba
