@@ -19,4 +19,4 @@ RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
 biocViews:
 Remotes:  
-    neuroconductor/neurobase@b47dbb9a04a991cd757939d3dbc93772c23cc321
+    neuroconductor/neurobase@1a0bdee481e1ba7bd9ab0d550a2663978dcf0334
