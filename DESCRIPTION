@@ -13,15 +13,10 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports: neurobase, tools, methods
-Suggests: 
-    magrittr,
-    knitr,
-    rmarkdown,
-    covr,
-    testthat
+Suggests: magrittr, knitr, rmarkdown, covr, testthat
 SystemRequirements: Java JDK 1.7 or higher
 RoxygenNote: 6.0.1.9000
 VignetteBuilder: knitr
-Remotes:  
-    neuroconductor/neurobase@701aee3580fca2dd878715fd3b2df46dfe1ca5ab
-biocViews: 
+biocViews:
+Remotes: 
+    neuroconductor/neurobase@78af0703255f3c77da3be3dc4453cb2830ddff87
