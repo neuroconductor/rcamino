@@ -20,4 +20,4 @@ VignetteBuilder: knitr
 biocViews:
 Repository: Neuroconductor
 Remotes: 
-    neuroconductor/neurobase@53d79de2165775a9afd97c19bb60c9a87fcee981
+    neuroconductor/neurobase@8b309ed4d496c575c76f572128b63d35efb97d01
