@@ -4,6 +4,9 @@ language: R
 sudo: false
 cache: packages
 
+os:
+  - linux 
+  - osx
 before_install:
   - fname=travis_helpers.sh
   - wget -O ${fname} http://bit.ly/travis_helpers
