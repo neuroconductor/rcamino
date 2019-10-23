@@ -4,9 +4,9 @@
 \alias{camino_dtifit}
 \title{Fit Model using Camino}
 \usage{
-camino_dtifit(infile, bvecs, bvals, mask, model = c("dt", "ldt", "nldt_pos",
-  "nldt", "ldt_wtd", "restore"), verbose = TRUE, inputmodel = c("dt",
-  "twotensor", "threetensor", "multitensor"), ...)
+camino_dtifit(infile, bvecs, bvals, mask, model = c("dt", "ldt",
+  "nldt_pos", "nldt", "ldt_wtd", "restore"), verbose = TRUE,
+  inputmodel = c("dt", "twotensor", "threetensor", "multitensor"), ...)
 }
 \arguments{
 \item{infile}{Input 4D image}

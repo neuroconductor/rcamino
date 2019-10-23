@@ -4,8 +4,9 @@
 \alias{camino_adcfit}
 \title{Wrapper for Camino \code{adcfit} function}
 \usage{
-camino_adcfit(infile, scheme, outfile = NULL, outputdatatype = c("double",
-  "float", "byte", "short", "int", "long"), verbose = TRUE)
+camino_adcfit(infile, scheme, outfile = NULL,
+  outputdatatype = c("double", "float", "byte", "short", "int", "long"),
+  verbose = TRUE)
 }
 \arguments{
 \item{infile}{input filename}

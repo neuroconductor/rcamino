@@ -5,9 +5,9 @@
 \title{Wrapper for Camino \code{dteig} function}
 \usage{
 camino_dteig(infile, outfile = NULL, inputmodel = c("dt", "twotensor",
-  "threetensor", "multitensor"), outputdatatype = c("float", "byte", "short",
-  "int", "long", "double"), maxcomponents = NULL, verbose = TRUE,
-  header = NULL)
+  "threetensor", "multitensor"), outputdatatype = c("float", "byte",
+  "short", "int", "long", "double"), maxcomponents = NULL,
+  verbose = TRUE, header = NULL)
 }
 \arguments{
 \item{infile}{Output from \code{\link{camino_modelfit}}}

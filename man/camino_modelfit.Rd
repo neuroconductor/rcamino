@@ -4,12 +4,13 @@
 \alias{camino_modelfit}
 \title{Wrapper for Camino \code{modelfit} function}
 \usage{
-camino_modelfit(infile, outfile = NULL, scheme, mask, model = c("dt", "ldt",
-  "nldt_pos", "nldt", "ldt_wtd", "restore"), inputdatatype = c("float",
-  "char", "short", "int", "long", "double"), maskdatatype = c("float", "char",
-  "short", "int", "long", "double"), outputdatatype = c("double", "float",
-  "char", "short", "int", "long"), startpoint = NULL, outliermap = NULL,
-  noisemap = NULL, residualmap = NULL, sigma = NULL, bgthresh = NULL,
+camino_modelfit(infile, outfile = NULL, scheme, mask, model = c("dt",
+  "ldt", "nldt_pos", "nldt", "ldt_wtd", "restore"),
+  inputdatatype = c("float", "char", "short", "int", "long", "double"),
+  maskdatatype = c("float", "char", "short", "int", "long", "double"),
+  outputdatatype = c("double", "float", "char", "short", "int", "long"),
+  startpoint = NULL, outliermap = NULL, noisemap = NULL,
+  residualmap = NULL, sigma = NULL, bgthresh = NULL,
   csfthresh = NULL, gradadj = NULL, verbose = TRUE)
 }
 \arguments{

@@ -4,9 +4,9 @@
 \alias{camino_voxelclassify}
 \title{Wrapper for Camino \code{voxelclassify} function}
 \usage{
-camino_voxelclassify(infile, scheme, outfile = NULL, outputdatatype = NULL,
-  mask = NULL, bgthresh = NULL, csfthresh = NULL, order = 4,
-  ftest = NULL, verbose = TRUE)
+camino_voxelclassify(infile, scheme, outfile = NULL,
+  outputdatatype = NULL, mask = NULL, bgthresh = NULL,
+  csfthresh = NULL, order = 4, ftest = NULL, verbose = TRUE)
 }
 \arguments{
 \item{infile}{input filename}

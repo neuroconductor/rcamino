@@ -4,9 +4,9 @@
 \alias{camino_selectshells}
 \title{Wrapper for Camino \code{selectshells} function}
 \usage{
-camino_selectshells(infile, schemefile, max_bval = NULL, min_bval = NULL,
-  output_root = tempfile(), max_unweighted_bval = NULL,
-  remove_zero = FALSE, verbose = TRUE)
+camino_selectshells(infile, schemefile, max_bval = NULL,
+  min_bval = NULL, output_root = tempfile(),
+  max_unweighted_bval = NULL, remove_zero = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input 4D file to select shells}

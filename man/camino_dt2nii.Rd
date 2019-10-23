@@ -4,9 +4,10 @@
 \alias{camino_dt2nii}
 \title{Wrapper for Camino \code{dt2nii} function}
 \usage{
-camino_dt2nii(infile, header, inputmodel = c("dt", "twotensor", "threetensor",
-  "multitensor"), outputroot = NULL, outputdatatype = NULL,
-  maxcomponents = NULL, gzip = TRUE, verbose = TRUE)
+camino_dt2nii(infile, header, inputmodel = c("dt", "twotensor",
+  "threetensor", "multitensor"), outputroot = NULL,
+  outputdatatype = NULL, maxcomponents = NULL, gzip = TRUE,
+  verbose = TRUE)
 }
 \arguments{
 \item{infile}{Output from \code{\link{camino_modelfit}}}

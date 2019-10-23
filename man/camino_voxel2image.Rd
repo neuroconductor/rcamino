@@ -4,9 +4,9 @@
 \alias{camino_voxel2image}
 \title{Wrapper for Camino \code{voxel2image} function}
 \usage{
-camino_voxel2image(infile, header, outputroot = NULL, inputdatatype = NULL,
-  outputdatatype = NULL, components = 1, gzip = TRUE,
-  outputvector = FALSE, verbose = TRUE)
+camino_voxel2image(infile, header, outputroot = NULL,
+  inputdatatype = NULL, outputdatatype = NULL, components = 1,
+  gzip = TRUE, outputvector = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{infile}{Input file (double, float, etc.)}

@@ -4,8 +4,8 @@
 \alias{camino_vcthreshselect}
 \title{Wrapper for Camino \code{vcthreshselect} function}
 \usage{
-camino_vcthreshselect(infile, datadims, bgthresh = NULL, csfthresh = NULL,
-  order = 4, ftest = NULL, verbose = TRUE)
+camino_vcthreshselect(infile, datadims, bgthresh = NULL,
+  csfthresh = NULL, order = 4, ftest = NULL, verbose = TRUE)
 }
 \arguments{
 \item{infile}{input filename}
