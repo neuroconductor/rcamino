@@ -4,5 +4,9 @@ language: R
 sudo: false
 cache: packages
 
-bioc_required: true
-use_bioc: true
+before_install:
+  - fname=travis_helpers.sh
+  - wget -O ${fname} http://bit.ly/travis_helpers
+  - cat ${fname}; source ${fname}; rm ${fname}  
+  - R CMD javareconf ;  
+  - local_java_home ;
