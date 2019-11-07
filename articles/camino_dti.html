@@ -118,7 +118,7 @@
 <a class="sourceLine" id="cb2-2" data-line-number="2">b_data_file =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"[.]txt$"</span>, files, <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">scheme_file =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_pointset2scheme.html">camino_pointset2scheme</a></span>(<span class="dt">infile =</span> b_data_file,</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">                                <span class="dt">bvalue =</span> <span class="fl">1e9</span>)</a></code></pre></div>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/pointset2scheme -inputfile '/tmp/RtmpWGhKrZ/grad_dirs.txt' -bvalue 1000000000 -outputfile /tmp/RtmpWGhKrZ/file7df513501a5b.scheme</code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/pointset2scheme -inputfile '/tmp/RtmpuE8pba/grad_dirs.txt' -bvalue 1000000000 -outputfile /tmp/RtmpuE8pba/file7efc57a105db.scheme</code></pre>
 </div>
 <div id="checking-our-data" class="section level2">
 <h2 class="hasAnchor">
@@ -126,7 +126,7 @@
 <p>Here we ensure that the number of b-values/b-vectors is the same as the number of time points in the 4D image.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(neurobase)</a></code></pre></div>
 <pre><code>Loading required package: oro.nifti</code></pre>
-<pre><code>oro.nifti 0.10.1</code></pre>
+<pre><code>oro.nifti 0.9.1</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">img_fname =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"4Ddwi_b1000"</span>, files, <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">img =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/neurobase/man/readNIfTI2.html">readnii</a></span>(img_fname)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">ntim</span>(img)</a></code></pre></div>
@@ -137,8 +137,8 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># cleanup</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/rm.html">rm</a></span>(<span class="dt">list=</span> <span class="st">"img"</span>); <span class="kw"><a href="https://rdrr.io/r/base/gc.html">gc</a></span>()</a></code></pre></div>
 <pre><code>          used (Mb) gc trigger  (Mb)  max used  (Mb)
-Ncells  722716 38.6    1254565  67.1   1254565  67.1
-Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
+Ncells  714359 38.2    1257251  67.2   1257251  67.2
+Vcells 1217239  9.3   98842286 754.2 123426093 941.7</code></pre>
 </div>
 </div>
 <div id="running-image-conversion" class="section level1">
@@ -147,7 +147,7 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <p>We will save the result in a temporary file (<code>outfile</code>), but also return the result as a <code>nifti</code> object <code>ret</code>, as <code>retimg = TRUE</code>. We will use the first volume as the reference as is the default in FSL. <em>Note</em> FSL is zero-indexed so the first volume is the zero-ith index:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">float_fname =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_image2voxel.html">camino_image2voxel</a></span>(<span class="dt">infile =</span> img_fname, </a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">                                <span class="dt">outputdatatype =</span> <span class="st">"float"</span>)</a></code></pre></div>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/image2voxel -inputfile '/tmp/RtmpWGhKrZ/4Ddwi_b1000.nii.gz' -outputfile '/tmp/RtmpWGhKrZ/file7df5489fe6a9.Bfloat' -outputdatatype float</code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/image2voxel -inputfile '/tmp/RtmpuE8pba/4Ddwi_b1000.nii.gz' -outputfile '/tmp/RtmpuE8pba/file7efc3acaf1e6.Bfloat' -outputdatatype float</code></pre>
 <p>Note, from here on forward we will use either the filename for the output of the eddy current correction or the eddy-current-corrected <code>nifti</code> object.</p>
 </div>
 <div id="fit-the-diffusion-tensor" class="section level1">
@@ -160,12 +160,12 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="dt">mask =</span> mask_fname,</a>
 <a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="dt">outputdatatype =</span> <span class="st">"double"</span></a>
 <a class="sourceLine" id="cb15-7" data-line-number="7">  )</a></code></pre></div>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/modelfit -inputfile '/tmp/RtmpWGhKrZ/file7df5489fe6a9.Bfloat' -outputfile '/tmp/RtmpWGhKrZ/file7df538fbf268.Bdouble' -inputdatatype float -schemefile /tmp/RtmpWGhKrZ/file7df513501a5b.scheme -bgmask /tmp/RtmpWGhKrZ/brain_mask.nii.gz -maskdatatype float -model dt</code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/modelfit -inputfile '/tmp/RtmpuE8pba/file7efc3acaf1e6.Bfloat' -outputfile '/tmp/RtmpuE8pba/file7efc5c4af009.Bdouble' -inputdatatype float -schemefile /tmp/RtmpuE8pba/file7efc57a105db.scheme -bgmask /tmp/RtmpuE8pba/brain_mask.nii.gz -maskdatatype float -model dt</code></pre>
 <div id="getting-fa-vlaues" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-fa-vlaues" class="anchor"></a>Getting FA vlaues</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">fa_fname =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_fa.html">camino_fa</a></span>(<span class="dt">infile =</span> model_fname)</a></code></pre></div>
-<pre><code>cat '/tmp/RtmpWGhKrZ/file7df538fbf268.Bdouble' |  /tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/fa -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpWGhKrZ/file7df551d8a7d1.Bdouble'</code></pre>
+<pre><code>cat '/tmp/RtmpuE8pba/file7efc5c4af009.Bdouble' |  /tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/fa -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpuE8pba/file7efc664931d.Bdouble'</code></pre>
 <div id="converting-fa-values-back-into-an-image" class="section level3">
 <h3 class="hasAnchor">
 <a href="#converting-fa-values-back-into-an-image" class="anchor"></a>Converting FA values back into an image</h3>
@@ -174,7 +174,7 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <a class="sourceLine" id="cb19-3" data-line-number="3">                            <span class="dt">header =</span> img_fname, </a>
 <a class="sourceLine" id="cb19-4" data-line-number="4">                            <span class="dt">gzip =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb19-5" data-line-number="5">                            <span class="dt">components =</span> <span class="dv">1</span>)</a></code></pre></div>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpWGhKrZ/file7df551d8a7d1.Bdouble -header /tmp/RtmpWGhKrZ/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpWGhKrZ/file7df5252f06dc_ -components 1 -gzip </code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpuE8pba/file7efc664931d.Bdouble -header /tmp/RtmpuE8pba/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpuE8pba/file7efc4ca049eb_ -components 1 -gzip </code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">fa_img =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/neurobase/man/readNIfTI2.html">readnii</a></span>(fa_img_name)</a></code></pre></div>
 </div>
 <div id="converting-with-piping" class="section level3">
@@ -186,8 +186,8 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <a class="sourceLine" id="cb22-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_fa.html">camino_fa</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb22-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_voxel2image.html">camino_voxel2image</a></span>(<span class="dt">header =</span> img_fname, <span class="dt">gzip =</span> <span class="ot">TRUE</span>, <span class="dt">components =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span>readnii</a></code></pre></div>
-<pre><code>cat '/tmp/RtmpWGhKrZ/file7df538fbf268.Bdouble' |  /tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/fa -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpWGhKrZ/file7df560272f4b.Bdouble'</code></pre>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpWGhKrZ/file7df560272f4b.Bdouble -header /tmp/RtmpWGhKrZ/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpWGhKrZ/file7df51ce1ea31_ -components 1 -gzip </code></pre>
+<pre><code>cat '/tmp/RtmpuE8pba/file7efc5c4af009.Bdouble' |  /tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/fa -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpuE8pba/file7efc27d2c454.Bdouble'</code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpuE8pba/file7efc27d2c454.Bdouble -header /tmp/RtmpuE8pba/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpuE8pba/file7efc23437410_ -components 1 -gzip </code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/all.equal.html">all.equal</a></span>(fa_img, fa_img2)</a></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -207,8 +207,8 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <a class="sourceLine" id="cb28-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_md.html">camino_md</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rcamino/man/camino_voxel2image.html">camino_voxel2image</a></span>(<span class="dt">header =</span> img_fname, <span class="dt">gzip =</span> <span class="ot">TRUE</span>, <span class="dt">components =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span>readnii</a></code></pre></div>
-<pre><code>cat '/tmp/RtmpWGhKrZ/file7df538fbf268.Bdouble' |  /tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/md -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpWGhKrZ/file7df52fd23ec9.Bdouble'</code></pre>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpWGhKrZ/file7df52fd23ec9.Bdouble -header /tmp/RtmpWGhKrZ/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpWGhKrZ/file7df57235019b_ -components 1 -gzip </code></pre>
+<pre><code>cat '/tmp/RtmpuE8pba/file7efc5c4af009.Bdouble' |  /tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/md -inputmodel dt -outputdatatype double &gt; '/tmp/RtmpuE8pba/file7efc72d1d2af.Bdouble'</code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/voxel2image -inputfile /tmp/RtmpuE8pba/file7efc72d1d2af.Bdouble -header /tmp/RtmpuE8pba/4Ddwi_b1000.nii.gz -outputroot /tmp/RtmpuE8pba/file7efc719b019e_ -components 1 -gzip </code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/pkg/neurobase/man/ortho2.html">ortho2</a></span>(md_img)</a></code></pre></div>
 <p><img src="camino_dti_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
@@ -223,12 +223,12 @@ Vcells 1223620  9.4  118673168 905.5 123682866 943.7</code></pre>
 <a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="dt">header =</span> img_fname, </a>
 <a class="sourceLine" id="cb32-5" data-line-number="5">  <span class="dt">gzip =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb32-6" data-line-number="6">)</a></code></pre></div>
-<pre><code>/tmp/Rtmpi8CwNL/temp_libpath7ba35d68aee5/rcamino/camino/bin/dt2nii -inputfile /tmp/RtmpWGhKrZ/file7df538fbf268.Bdouble -header /tmp/RtmpWGhKrZ/4Ddwi_b1000.nii.gz -inputmodel dt -outputroot /tmp/RtmpWGhKrZ/file7df510eaffa3_ -gzip </code></pre>
+<pre><code>/tmp/RtmphS272S/temp_libpath7caa5493839a/rcamino/camino/bin/dt2nii -inputfile /tmp/RtmpuE8pba/file7efc5c4af009.Bdouble -header /tmp/RtmpuE8pba/4Ddwi_b1000.nii.gz -inputmodel dt -outputroot /tmp/RtmpuE8pba/file7efc7b95f819_ -gzip </code></pre>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/all.html">all</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(nifti_dt)))</a>
 <a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(nifti_dt)</a></code></pre></div>
-<pre><code>[1] "/tmp/RtmpWGhKrZ/file7df510eaffa3_exitcode.nii.gz"
-[2] "/tmp/RtmpWGhKrZ/file7df510eaffa3_lns0.nii.gz"    
-[3] "/tmp/RtmpWGhKrZ/file7df510eaffa3_dt.nii.gz"      </code></pre>
+<pre><code>[1] "/tmp/RtmpuE8pba/file7efc7b95f819_exitcode.nii.gz"
+[2] "/tmp/RtmpuE8pba/file7efc7b95f819_lns0.nii.gz"    
+[3] "/tmp/RtmpuE8pba/file7efc7b95f819_dt.nii.gz"      </code></pre>
 <p>We can read these DT images into <code>R</code> again using <code>readnii</code>, but we must set <code>drop_dim = FALSE</code> for diffusion tensor images because the pixel dimensions are zero and <code>readnii</code> assumes you want to drop “empty” dimensions</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">dt_imgs =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(nifti_dt, readnii, <span class="dt">drop_dim =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
