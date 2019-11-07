@@ -10,3 +10,4 @@ camino_generic_function\.R
 ^codecov\.yml$
 ^wercker\.yml$
 ^appveyor\.yml$
+^\./\.travis\.yml\.bak$
