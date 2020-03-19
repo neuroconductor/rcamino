@@ -1,7 +1,6 @@
 language: r
 warnings_are_errors: true
 cache: packages
-use_bioc: true
 bioc_required: true
 cran: http://cran.rstudio.com
 dist: trusty
@@ -12,7 +11,6 @@ addons:
     - libxml2-dev
     - libfftw3-dev
     - libgsl0-dev
-    - libgsl0ldbl
     - mesa-common-dev
     - libglu1-mesa-dev
     - devscripts
@@ -20,15 +18,14 @@ os:
 - linux
 - osx
 osx_image: xcode9.4
-services:
-- xvfb
+services: xvfb
 r:
 - 3.3
 - 3.4
 - 3.5
 - release
 - devel
-matrix:
+jobs:
   allow_failures:
   - r: devel
 env:
@@ -41,6 +38,7 @@ env:
   - CACHE_NAME="${TRAVIS_OS_NAME}-R-${TRAVIS_R_VERSION}"
 r_check_args: "--as-cran --install-args=--build"
 before_install:
+- if [ "$TRAVIS_DIST" = "trusty" ]; then sudo apt-get -y install libgsl0ldbl ; fi
 - ulimit -n 2048
 - export PROJ_DIR=`basename $PWD`
 - fname=travis_helpers.sh
@@ -50,11 +48,16 @@ before_install:
 - codename=`linux_codename`;
 - start_xvfb ;
 - export rver=`r_version`; echo $rver ;
+- x=`export_clang_cxx`; eval ${x}
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then no_open_mp ; brew install -v freetype ; fi
 - jags_install || true;
 - if `need_v8`; then v8_install || true; fi
 - dcmtk_install || true;
 - gsl_install 2.1 || true ;
+- echo "CC=${CC}, CXX=${CXX}, CXX1X=${CXX1X}"
+- echo "CXX1XSTD=${CXX1XSTD}, CXX11=${CXX11}"
+- echo "CXX1XSTD=${CXX1XSTD}, CXX11=${CXX11}"
+- clang_cxx
 - export cmake_version="3.11"
 - cmake --version
 - x=`cmake_setup`; echo "${x}"; eval ${x};
@@ -68,15 +71,14 @@ before_install:
 - if [[ "${PACKAGE_NAME}" == "waveslim" ]]; then fftw_install ; fi
 - if [[ "${PACKAGE_NAME}" == "dti" || "${PACKAGE_NAME}" == "qMRI" ]]; then gsl_install
   ; fi
-- if [[ "${PACKAGE_NAME}" == "ROpenCVLite" || "${PACKAGE_NAME}" == "Rvision" ]]; then
-  shopt -s expand_aliases ; x=`Rscript -e "cat(Sys.which('R'))"` ; echo "reset R"
-  ; alias R="travis_wait 100 ${x}" ; fi
+- if [[ "${PACKAGE_NAME}" == "ROpenCVLite" || "${PACKAGE_NAME}" == "Rvision" || "${PACKAGE_NAME}"
+  == "rtapas" ]]; then shopt -s expand_aliases ; x=`Rscript -e "cat(Sys.which('R'))"`
+  ; echo "reset R" ; alias R="travis_wait 100 ${x}" ; fi
+- setup_python 3.6 false ;
 - install_python_requirements ;
 - R CMD javareconf ;
-after_success:
-- dump_logs
-after_failure:
-- dump_logs
+after_success: dump_logs
+after_failure: dump_logs
 before_deploy:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then PKG_TARBALL=$(ls -1t *.tgz | head -n 1);
   PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.tgz/_'"R${rver}"'.tgz/'` ; mv ${PKG_TARBALL}
@@ -94,8 +96,8 @@ deploy:
   file: "${PACKAGE_NAME}*.t*gz"
   on:
     tags: true
-  api-key:
-    secure: rtMOJnuhF3a1h23rvPwqbZUsLEYiZkylaTAtfaUtYUzuGceveNPOySn+2A+PmkLQjZkndRj3oZnBmtsKVLsL54G1mhqgTfWSqNX6BaJvTdqdvh2UqIoZfgY+nXS3zuYWlGKO+Du6byCy4WmDx81LIPivnBiRC4wZh7upPQF+MJbyPz8SeUNOlT79BEsMEoqpuRxPkZYL5plfpJtnNKyXTdUvnjHsxfyAOoRufOBFZRJ7q/bzxGedRlfYNBFZJvALn5WoOEc0V0cjQ+rv3+V0q0ExIPzdevSya4IHXW2pL8LeAUDFUqyQsusASCh9+ui5SVd5azTrnwmNVW0Ovb+CR3cac9T/x77/5tGcIVgtYZapPYNSx0KjmqwNjmFkgxS0lsmTjAh3EVaNAO3dcobGHO37f3Qzdriey38pGEp/IYa0hlOJSYqaOWdXJUMylg6U6LiJ4jaUIly/2iYaI4exkZa3huQIl6kDhFHDJMpQERKMbRG8B7h2dwTgpOTqdNnBlUiCnD4N+3TjSUcg315LEO6bsVWyefuHjc8fJf0Hy7AbSgIbGuuv3LZ/rSlyhhtYmf2j3p9Ng+/kd7+ljNQK+lYWb5MIXNbuXW8K0/bEhycWfyNOv4kBML9a4ywXI7W4MJIKctfLLNQD1nXM1cgfSMz+xpu6Yjy2lRoCzd/g1P8=
+  token:
+    secure: O72gqJjlKFo/Ir2/8oaN3qTMKwX5Up07nd6kqNxXjBOK4HGZdf10C15APVe9gXpeiUQsHkzoHrYmZAApj89dOwEqpEdvyonW7OFa1uNH8sAfcRcTsVPRO+Lvw662DWDFW7Rp3ok0ky/zOMmi5EjvShMqc5Pz0IxQjZkZfCn/JtmWo/5EJQaN/6q08Sb+QulCP3xF904VBKfQnb+9XURp+0JUSPKVZaG1tG7CZW/xdm7segFoonXnV/cuoCCKnkjIZm0weOMmqmt7gtVUNs3u2zSklXwqsXvwYWcSt3ennI1MYM+Mm/gLF/A3a2MAdx57pW7p+wXdiEQ4iGE3uv+e+nQxW0JxKgUiQmFBecvaGoGeThrbhCRRNujiwvL/98rPcPu18o2u3T8albhsLUeE4MjYD9LbDWFGnkqxRxnVruNkIGMCKUIXaunxHknsHTNv6nSc+liHtDoo6xPeLg/mKDNGlqqW5N4FJuIKbLjMcsAE/Q0CpvQ5SJeow8//zUemnJpPh7nKKWwd91Avq3cD/MA4dYikL0U3EYT1esxk5c+5cJ3THf6HLW12PSum6QPqizFd8mwJcuCW8K400HWpHVsifC06hqxj+bgyCHFJPV4SG3qfK+84XrC4c3ajMvgAHbqXt7p/T8PFJLZq7ym/BgNCXiBuW9U0Le1xUQyUpRo=
 after_deploy:
 - echo "${PROJECT_NAME}" | grep -q "releases"; if [[ $? -eq 0 ]]; then run_coverage="false";
   else run_coverage=; fi;
@@ -103,4 +105,4 @@ after_deploy:
   -z "${run_coverage}" ]]; then echo 'covr::coveralls(type = "all", quiet = FALSE)'
   > neuroc_covr.R ; travis_wait 100 Rscript neuroc_covr.R ; rm neuroc_covr.R ; fi
 
-#neuroc.deps version (SHA): b999a2d
+#neuroc.deps version (SHA): aa71b4d
