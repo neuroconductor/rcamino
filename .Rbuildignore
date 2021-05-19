@@ -10,3 +10,8 @@ camino_generic_function\.R
 ^codecov\.yml$
 ^wercker\.yml$
 ^appveyor\.yml$
+^DESCRIPTION\.bak$
+^\.github$
+^autoci\.yml$
+^autoci_pkgdown\.yml$
+^tic\.R$
